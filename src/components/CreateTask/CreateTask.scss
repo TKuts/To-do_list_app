@@ -1,0 +1,150 @@
+.add__task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+  &-input {
+    width: 816px;
+    height: 41px;
+    max-height: 200px;
+    font-family: "Monda", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29px;
+    color: #3e3b3b;
+    background-color: #a8d2a5;
+    border-radius: 25px;
+    padding: 6px 28px;
+    margin-bottom: 26px;
+    border: none;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    resize: none;
+    @media (min-width: 360px) and (max-width: 400px) {
+      width: 296px;
+      padding: 6px 16px;
+    }
+    @media (min-width: 401px) and (max-width: 440px) {
+      width: 310px;
+      padding: 6px 16px;
+    }
+    @media (min-width: 441px) and (max-width: 471px) {
+      width: 340px;
+      padding: 6px 16px;
+    }
+    @media (min-width: 471px) and (max-width: 580px) {
+      width: 370px;
+      padding: 6px 16px;
+    }
+    @media (min-width: 768px) and (max-width: 912px) {
+      width: 650px;
+      padding: 6px 16px;
+    }
+  }
+  &-area {
+    width: 816px;
+    height: 41px;
+    max-height: 200px;
+    font-family: "Monda", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29px;
+    color: #3e3b3b;
+    background-color: #a8d2a5;
+    border-radius: 25px;
+    padding: 6px 28px;
+    margin-bottom: 26px;
+    border: none;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    resize: none;
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+    @media (min-width: 360px) and (max-width: 400px) {
+      width: 296px;
+      height: 124px;
+    }
+    @media (min-width: 401px) and (max-width: 440px) {
+      width: 310px;
+      height: 124px;
+    }
+    @media (min-width: 441px) and (max-width: 471px) {
+      width: 340px;
+      height: 124px;
+    }
+    @media (min-width: 471px) and (max-width: 580px) {
+      width: 370px;
+      height: 124px;
+    }
+
+    @media (min-width: 768px) and (max-width: 912px) {
+      width: 650px;
+      height: 41px;
+    }
+  }
+
+  &-btn {
+    font-family: "Monda", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 29px;
+    color: #3e3b3b;
+    width: 290px;
+    padding: 16px 122px;
+    background: linear-gradient(90deg, #a8d2a5 0%, #acd4e1 115.2%);
+    box-shadow: 0px 4px 4px #acd4e1;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 500ms ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+    @media (min-width: 360px) and (max-width: 400px) {
+      width: 300px;
+      padding: 16px 130px;
+      &:hover {
+        transform: none;
+      }
+    }
+    @media (min-width: 401px) and (max-width: 440px) {
+      width: 310px;
+      padding: 16px 140px;
+      &:hover {
+        transform: none;
+      }
+    }
+    @media (min-width: 441px) and (max-width: 471px) {
+      width: 340px;
+      padding: 16px 150px;
+      &:hover {
+        transform: none;
+      }
+    }
+    @media (min-width: 471px) and (max-width: 580px) {
+      width: 370px;
+      padding: 16px 150px;
+      &:hover {
+        transform: none;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 912px) {
+      width: 640px;
+      padding: 16px 150px;
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
+.errorMessage {
+  font-family: "Monda", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  color: red;
+
+  margin: -20px 0 10px 0;
+}

@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap");
+html,
+body {
+  height: 100%;
+  font-size: 16px;
+}
+.centr__page {
+  display: flex;
+  justify-content: center;
+}
+.wraper {
+  width: 1200px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  overflow: hidden;
+}
+// ============
+
+// ===============
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.check-true {
+  font-size: 30px;
+  color: #156b2d;
+  pointer-events: none;
+}
+.check-false {
+  font-size: 30px;
+  color: #a09d9d;
+  pointer-events: none;
+}
+.display {
+  display: none;
+}
+.pencil {
+  font-size: 25px;
+  color: #156b2d;
+  pointer-events: none;
+}
+.bin {
+  font-size: 25px;
+  color: #bc0808;
+  pointer-events: none;
+}
+
+.block-input {
+  pointer-events: none;
+}
+
+.header {
+  margin: 30px 0 43px 0;
+  position: relative;
+  &__title {
+    font-family: "Monda", sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 78px;
+    letter-spacing: 0.25em;
+    color: #000000;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+}
+.first-oval {
+  width: 514px;
+  height: 292px;
+  background: #acd4e1;
+  border-radius: 257px/146px;
+  top: -150px;
+  right: -241px;
+  z-index: 1;
+  position: absolute;
+}
+.second-oval {
+  width: 526px;
+  height: 252px;
+  background: #acd4e1;
+  border-radius: 263px/126px;
+  top: -178px;
+  right: 74px;
+  z-index: 1;
+  position: absolute;
+}
+.third-oval {
+  width: 476px;
+  height: 292px;
+  background: #c8e3ec;
+  border-radius: 238px/146px;
+  top: -96px;
+  right: -214px;
+  position: absolute;
+}
+.fourth-oval {
+  width: 486px;
+  height: 252px;
+  background: #c8e3ec;
+  border-radius: 243px/126px;
+  top: -128px;
+  right: 86px;
+  position: absolute;
+}
