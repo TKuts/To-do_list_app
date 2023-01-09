@@ -1,11 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 1673033155752,
-      "title": "Купить",
-      "description": "Хлеб",
-      "editForm": false,
-      "isCheck": false
-    }
-  ]
+  "todos": []
 }

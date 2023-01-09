@@ -38,7 +38,7 @@ class Footer extends Component {
               <button 
 				  type="button" 
 				  className="footer__elem-btn"
-				  onClick={()=> {this.props.onDeletAll(this.props.state.arrayTask)} }
+				  onClick={()=> {this.props.onDeletAll()} }
 				  >
                 <i className="trash bi bi-trash3"></i>
               </button>

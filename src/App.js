@@ -5,6 +5,7 @@ import CreateTask from "./components/CreateTask";
 import ListTask from "./components/ListTask";
 import Footer from "./components/Footer";
 import Sort from "./components/Sort";
+import Modal from "./components/Modal";
 
 import { sendRequest } from "./helpers";
 import { sortArrayTasks } from "./helpers/sort";
@@ -18,11 +19,13 @@ class App extends Component {
     this.state = {
       sort: false,
       arrayTask: [],
-      sortSelector: "",
+      sortSelector: "old",
+      modal: false,
     };
 
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.modal = this.modal.bind(this);
     this.deletAllTask = this.deletAllTask.bind(this);
     this.editTask = this.editTask.bind(this);
     this.onCheck = this.onCheck.bind(this);
@@ -35,35 +38,28 @@ class App extends Component {
   }
 
   updatePage() {
-    sendRequest("http://localhost:3001/todos", "GET").then((result) => {
-      this.setState({
-        arrayTask: result,
-      });
-    });
+    sendRequest("http://localhost:3001/todos", "GET")
+      .then((result) => sortArrayTasks(result, this.state.sortSelector))
+      .then((array) =>
+        this.setState({
+          arrayTask: array,
+        })
+      );
   }
 
-  addTask(arrayTask) {
+  addTask(newTaskObject) {
     let sortSelector = this.state.sortSelector;
 
-    if (sortSelector === "") {
-      sendRequest("http://localhost:3001/todos", "POST", arrayTask).then(
-        (arrayTask) =>
-          this.setState({
-            arrayTask: [arrayTask, ...this.state.arrayTask],
-          })
-      );
-    } else {
-      let newArray = sortArrayTasks(sortSelector, [
-        ...this.state.arrayTask,
-        arrayTask,
-      ]);
-      sendRequest("http://localhost:3001/todos", "POST", arrayTask).then(
-        (arrayTask) =>
-          this.setState({
-            arrayTask: newArray,
-          })
-      );
-    }
+    let newArray = sortArrayTasks(
+      [...this.state.arrayTask, newTaskObject],
+      sortSelector
+    );
+    sendRequest("http://localhost:3001/todos", "POST", newTaskObject).then(
+      (arrayTask) =>
+        this.setState({
+          arrayTask: newArray,
+        })
+    );
   }
 
   deleteTask(arrayTask) {
@@ -79,13 +75,19 @@ class App extends Component {
     this.updatePage();
   }
 
+  modal() {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  }
+
   deletAllTask(arrayTask) {
-    if (confirm("Do you want to delete all the tasks?")) {
-      arrayTask.map((el) => {
-        sendRequest(`http://localhost:3001/todos/${el.id}`, "DELETE");
-      });
-      this.updatePage();
-    }
+    //  if (confirm("Do you want to delete all the tasks?")) {
+    //    arrayTask.map((el) => {
+    //      sendRequest(`http://localhost:3001/todos/${el.id}`, "DELETE");
+    //    });
+    //    this.updatePage();
+    //  }
   }
 
   onCheck(arrayTask) {
@@ -125,10 +127,12 @@ class App extends Component {
   }
 
   sort(sortedArray, sortSelector) {
-    this.setState({
-      arrayTask: sortedArray,
-      sortSelector: sortSelector,
-    });
+    if (sortSelector !== this.state.sortSelector) {
+      this.setState({
+        arrayTask: sortedArray,
+        sortSelector: sortSelector,
+      });
+    }
   }
 
   render() {
@@ -149,10 +153,13 @@ class App extends Component {
               onEdit={this.editTask}
               onCheck={this.onCheck}
             />
+            <Modal onDeletAll={this.modal} statusModal={this.state.modal}>
+              <button></button>
+            </Modal>
           </main>
           <Footer
             state={this.state}
-            onDeletAll={this.deletAllTask}
+            onDeletAll={this.modal}
             onSortBtn={this.onSortBtn} //-
           />
         </div>

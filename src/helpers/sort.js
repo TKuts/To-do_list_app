@@ -1,7 +1,10 @@
-export function sortArrayTasks(sortSelector, array) {
+export function sortArrayTasks(array, sortSelector) {
   let sortedArray = [];
 
   if (sortSelector === "new") {
+    sortedArray = array.sort((a, b) => (a.id > b.id ? -1 : 1));
+  }
+  if (sortSelector === "old") {
     sortedArray = array.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
   if (sortSelector === "first letter") {
