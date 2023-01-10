@@ -75,21 +75,6 @@ class App extends Component {
     this.updatePage();
   }
 
-  modal() {
-    this.setState({
-      modal: !this.state.modal,
-    });
-  }
-
-  deletAllTask(arrayTask) {
-    //  if (confirm("Do you want to delete all the tasks?")) {
-    //    arrayTask.map((el) => {
-    //      sendRequest(`http://localhost:3001/todos/${el.id}`, "DELETE");
-    //    });
-    //    this.updatePage();
-    //  }
-  }
-
   onCheck(arrayTask) {
     arrayTask.isCheck === false
       ? (arrayTask.isCheck = true)
@@ -135,6 +120,22 @@ class App extends Component {
     }
   }
 
+  modal() {
+    console.log("+");
+    this.setState({
+      modal: !this.state.modal,
+    });
+  }
+
+  deletAllTask(arrayTask) {
+    console.log("second", arrayTask);
+
+    arrayTask.map((el) => {
+      sendRequest(`http://localhost:3001/todos/${el.id}`, "DELETE");
+    });
+    this.updatePage();
+  }
+
   render() {
     return (
       <div className="centr__page">
@@ -153,13 +154,47 @@ class App extends Component {
               onEdit={this.editTask}
               onCheck={this.onCheck}
             />
-            <Modal onDeletAll={this.modal} statusModal={this.state.modal}>
-              <button></button>
+            <Modal modal={this.modal} statusModal={this.state.modal}>
+              <h2 className="modal__content-title">
+                Do you want to delete all the tasks?
+              </h2>
+              <div className="modal__content-ppp">
+                <button
+                  type="button"
+                  className="modal__content-btn"
+                  onClick={() => {
+                    this.deletAllTask(this.state.arrayTask), this.modal();
+                  }}
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  className="modal__content-btn"
+                  onClick={() => this.modal()}
+                >
+                  No
+                </button>
+              </div>
+
+              {/* { if(deleteTask){
+                  <p className="text-modal">Text</p>
+              }
+               <p><Attantion className="text-modal"></Attantion></p>
+               
+            } */}
+              {/* [Cancel, Delete, Reset].forEach(element => {
+              <button>{el}</button>
+              
+            } */}
+              {/* ); */}
+
+              {/* .fill(1) */}
             </Modal>
           </main>
           <Footer
             state={this.state}
-            onDeletAll={this.modal}
+            modal={this.modal}
             onSortBtn={this.onSortBtn} //-
           />
         </div>

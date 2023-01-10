@@ -5,12 +5,7 @@ class Header extends Component{
 		return (
 			<header className="header">
             <h1 className="header__title">My Tasks</h1>
-         <div>
-				<div className="first-oval"></div>
-				<div className="second-oval"></div>
-				<div className="third-oval"></div>
-				<div className="fourth-oval"></div>
-          </div>
+        		<div className="cloud"></div>
        </header>
 		)
 	}
