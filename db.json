@@ -1,18 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 1673380854826,
-      "title": "6",
-      "description": "6",
-      "editForm": false,
-      "isCheck": false
-    },
-    {
-      "id": 1673380856988,
-      "title": "5",
-      "description": "5",
-      "editForm": false,
-      "isCheck": false
-    }
-  ]
+  "todos": []
 }

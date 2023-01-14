@@ -48,7 +48,7 @@ render(){
 					<button
 						type="button"
 						className="task__btn"
-						onClick={()=> this.props.onDelete(this.task)} 
+						onClick={()=> { this.props.modal("oneTask", this.task)}} 
 					  >
 						<i className="bin bi bi-trash3 lg" ></i>
 					</button>

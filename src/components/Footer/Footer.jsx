@@ -38,7 +38,7 @@ class Footer extends Component {
               <button 
 				  type="button" 
 				  className="footer__elem-btn"
-				  onClick={()=> {this.props.modal()} }
+				  onClick={()=> {this.props.modal("allTasks")} }
 				  >
                 <i className="trash bi bi-trash3"></i>
               </button>

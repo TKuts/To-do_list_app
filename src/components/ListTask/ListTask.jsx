@@ -18,7 +18,7 @@ render(){
 					onDelete={this.props.onDelete} 
 					onEdit={this.props.onEdit} 
 					onCheck={this.props.onCheck}
-				
+					modal={this.props.modal}
 				 />
 			))}
 		</ul>)	
