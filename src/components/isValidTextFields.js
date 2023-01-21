@@ -1,10 +1,10 @@
 export function isValidTextFields(...args) {
   return [...args].every((x) => {
     if (x === "") {
-      return console.error("field is empty");
+      return;
     }
 
-    if (x.length <= 2) {
+    if (x.length < 1) {
       return console.error("Longer word");
     }
 

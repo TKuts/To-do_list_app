@@ -13,6 +13,7 @@
   transition: 0.4s;
 }
 .modal.active {
+  z-index: 99;
   opacity: 1;
   pointer-events: all;
 }
@@ -28,6 +29,12 @@
   width: 50vw;
   transform: scale(0.5);
   transition: 0.3s all;
+  &-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   &-title {
     font-family: "Monda", sans-serif;
     font-weight: 400;
@@ -36,14 +43,14 @@
     color: #000000;
     margin-bottom: 37px;
   }
-  &-ppp {
-    display: flex;
-  }
-  &-btn {
+}
+.section__buttons {
+  display: flex;
+
+  &-once {
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-family: "Monda", sans-serif;
     font-weight: 400;
     font-size: calc(18px + 8 * (100vw / 1280));
@@ -52,17 +59,44 @@
     height: 5vh;
     width: 10vw;
     padding: 16px 39px;
-
     background: linear-gradient(90deg, #a8d2a5 0%, #acd4e1 115.2%);
     box-shadow: 0px 4px 4px #acd4e1;
     border-radius: 25px;
     cursor: pointer;
-    margin-right: 6px;
+    margin-right: 20px;
     &:last-child {
       margin-right: 0px;
     }
   }
 }
+
 .modal__content.active {
   transform: scale(1);
+}
+
+@media (min-width: 360px) and (max-width: 400px) {
+  .modal__content {
+    height: 28vh;
+  }
+  .section__buttons {
+    &-once {
+      margin-right: 10px;
+    }
+  }
+}
+@media (min-width: 401px) and (max-width: 440px) {
+  .modal__content {
+    height: 22vh;
+  }
+  .section__buttons {
+    &-once {
+      margin-right: 10px;
+    }
+  }
+}
+@media (min-width: 441px) and (max-width: 471px) {
+}
+@media (min-width: 471px) and (max-width: 580px) {
+}
+@media (min-width: 768px) and (max-width: 912px) {
 }

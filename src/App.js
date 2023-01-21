@@ -22,18 +22,19 @@ class App extends Component {
       sort: false,
       sortSelector: "old",
       modal: false,
-      modalMarker: "",
-      taskBeDelet: null,
+      modalTitle: "",
+      whatDelet: NaN,
     };
 
     this.addTask = this.addTask.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
-    this.modal = this.modal.bind(this);
-    this.deletAllTask = this.deletAllTask.bind(this);
-    this.editTask = this.editTask.bind(this);
     this.onCheck = this.onCheck.bind(this);
+    this.editTask = this.editTask.bind(this);
     this.onSortBtn = this.onSortBtn.bind(this);
     this.sort = this.sort.bind(this);
+    this.triggerModal = this.triggerModal.bind(this);
+    this.modalConfirm = this.modalConfirm.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
+    this.resetListTask = this.resetListTask.bind(this);
   }
 
   componentDidMount() {
@@ -109,22 +110,32 @@ class App extends Component {
       });
     }
   }
-  modal(data, arrayTask) {
+
+  triggerModal = (props, whatDelet) => {
+    props === "OneTask"
+      ? this.setState({
+          modalTitle: "Do you want to delete this items?",
+          whatDelet: whatDelet,
+        })
+      : this.setState({
+          modalTitle: "Do you want to delete all tasks?",
+          whatDelet: whatDelet,
+        });
+
     if (this.state.arrayTask.length !== 0) {
       this.setState({
         modal: !this.state.modal,
-        modalMarker: data,
-        taskBeDelet: arrayTask,
       });
     }
-  }
+  };
 
-  deletAllTask(arrayTask) {
-    arrayTask.map((el) => {
-      sendRequest(`http://localhost:3001/todos/${el.id}`, "DELETE");
-    });
-    this.updatePage();
-  }
+  modalConfirm = () => {
+    if (this.state.modalTitle === "Do you want to delete this items?") {
+      this.deleteTask(this.state.whatDelet);
+    } else {
+      this.resetListTask(this.state.whatDelet);
+    }
+  };
 
   deleteTask(arrayTask) {
     sendRequest(`http://localhost:3001/todos/${arrayTask.id}`, "DELETE").then(
@@ -136,6 +147,13 @@ class App extends Component {
         })
     );
 
+    this.updatePage();
+  }
+
+  resetListTask(arrayTask) {
+    arrayTask.map((el) => {
+      sendRequest(`http://localhost:3001/todos/${el.id}`, "DELETE");
+    });
     this.updatePage();
   }
 
@@ -153,67 +171,26 @@ class App extends Component {
             )}
             <ListTask
               state={this.state.arrayTask}
-              onDelete={this.deleteTask}
               onEdit={this.editTask}
               onCheck={this.onCheck}
-              modal={this.modal}
+              modal={this.triggerModal}
+              modalConfirm={this.modalConfirm}
             />
             {/* <Slider /> */}
 
-            {this.state.modalMarker === "allTasks" ? (
-              <Modal modal={this.modal} statusModal={this.state.modal}>
-                <h2 className="modal__content-title">
-                  Do you want to delete all tasks?
-                </h2>
-                <div className="modal__content-ppp">
-                  <button
-                    type="button"
-                    className="modal__content-btn"
-                    onClick={() => {
-                      this.deletAllTask(this.state.arrayTask), this.modal();
-                    }}
-                  >
-                    Yes
-                  </button>
-                  <button
-                    type="button"
-                    className="modal__content-btn"
-                    onClick={() => this.modal()}
-                  >
-                    No
-                  </button>
-                </div>
-              </Modal>
-            ) : (
-              <Modal modal={this.modal} statusModal={this.state.modal}>
-                <h2 className="modal__content-title">
-                  Do you want to Delet this item?
-                </h2>
-                <div className="modal__content-ppp">
-                  <button
-                    type="button"
-                    className="modal__content-btn"
-                    onClick={() => {
-                      this.deleteTask(this.state.taskBeDelet), this.modal();
-                    }}
-                  >
-                    Yes
-                  </button>
-                  <button
-                    type="button"
-                    className="modal__content-btn"
-                    onClick={() => this.modal()}
-                  >
-                    No
-                  </button>
-                </div>
-              </Modal>
-            )}
+            <Modal
+              modal={this.triggerModal}
+              statusModal={this.state.modal} //
+              modalTitle={this.state.modalTitle}
+              modalConfirm={this.modalConfirm}
+            >
+              {this.state.modalTitle}
+            </Modal>
           </main>
           <Footer
             state={this.state}
-            modal={this.modal}
-            onSortBtn={this.onSortBtn} //-
+            modal={this.triggerModal}
+            onSortBtn={this.onSortBtn}
           />
         </div>
       </div>

@@ -15,8 +15,6 @@ class CreateTask extends Component {
     };
   }
 
-
-
   render() {
     const handleChangeTitle = (e) => {
       this.setState({ title: e.target.value });
@@ -29,7 +27,7 @@ class CreateTask extends Component {
     const handleSummiteTask = (e) => {
       e.preventDefault();
 
-		validation (this.state.title , this.state.description)
+      validation(this.state.title, this.state.description);
 
       this.myForm.reset(this.props.onAdd);
 
@@ -38,44 +36,29 @@ class CreateTask extends Component {
         description: "",
       });
     };
-	 const validation = (firstValue, secondValue)=>{
+    const validation = (firstValue, secondValue) => {
+      if (firstValue !== "" && secondValue !== "") {
+        this.props.onAdd({
+          id: Date.now(),
+          title: this.state.title,
+          description: this.state.description,
+          editForm: false,
+          isCheck: false,
+        });
 
-		if(firstValue !== "" && secondValue !==""){
-			this.props.onAdd({
-				id: Date.now(),
-				title: this.state.title,
-				description: this.state.description,
-				editForm: false,
-				isCheck: false,
-			});
-			
-			this.setState({
-				errorMessage: false,
-			})
-		} else if(firstValue == ""){
-			this.setState({
-				errorMessage : {title : true}
-				
-			})
-		}else if(secondValue == ""){
-			this.setState({
-				errorMessage : {description: true}
-				
-			})
-		}
-
-	 
-}
-
-   //  if (isValidTextFields(this.state.title, this.state.description)) {
-   //    this.props.onAdd({
-   //      id: Date.now(),
-   //      title: this.state.title,
-   //      description: this.state.description,
-   //      editForm: false,
-   //      isCheck: false,
-   //    });
-   //  }
+        this.setState({
+          errorMessage: false,
+        });
+      } else if (firstValue == "") {
+        this.setState({
+          errorMessage: { title: true },
+        });
+      } else if (secondValue == "") {
+        this.setState({
+          errorMessage: { description: true },
+        });
+      }
+    };
 
     return (
       <form className="add__task" ref={(element) => (this.myForm = element)}>
