@@ -1,18 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 1674314247865,
-      "title": "333",
-      "description": "444",
-      "editForm": false,
-      "isCheck": false
-    },
-    {
-      "id": 1674318651545,
-      "title": "Придбати",
-      "description": "в сільпо",
-      "editForm": false,
-      "isCheck": false
-    }
-  ]
+  "todos": []
 }

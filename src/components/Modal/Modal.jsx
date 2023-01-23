@@ -24,7 +24,7 @@ class Modal extends Component {
                 className="section__buttons-once"
                 onClick={() => {
                   this.props.modal();
-                  this.props.modalConfirm();
+                  this.props.modalConfirm(true);
                 }}
               >
                 Yes
@@ -34,6 +34,7 @@ class Modal extends Component {
                 className="section__buttons-once"
                 onClick={() => {
                   this.props.modal();
+                  this.props.modalConfirm(false);
                 }}
               >
                 Cancel
