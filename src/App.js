@@ -21,11 +21,10 @@ class App extends Component {
       arrayTask: [],
       sort: false,
       sortSelector: "old",
+      //local state to modal
       modal: false,
       modalTitle: "",
       whatDelet: NaN,
-      // =====
-      modalConfirm: "",
     };
 
     this.addTask = this.addTask.bind(this);
@@ -52,6 +51,9 @@ class App extends Component {
         })
       );
   }
+  // get Message(){
+  //   return 1
+  // }
 
   addTask(newTaskObject) {
     let sortSelector = this.state.sortSelector;
@@ -178,55 +180,8 @@ class App extends Component {
               modal={this.triggerModal}
               modalConfirm={this.modalConfirm}
             />
-            <Slider>
-              <div className="page">
-                <p className="page-text">
-                  Welcome to list maker! Our page will help you stay on top of
-                  your lists.
-                </p>
-              </div>
-              <div className="page">
-                <p className="page-text">
-                  To get started simply type your first item in the box below
-                  and a new list will be created automatically. Click the 'add'
-                  button to add items to your list and the 'remove' button to
-                  edit items out.
-                </p>
-              </div>
-              <div className="page">
-                <p className="page-text">
-                  Click the 'reset' button to clear your list and start over.
-                </p>
-              </div>
-              <div className="page">
-                <p className="page-text">
-                  In order to edit descriptions to your items click the
-                  'description' button.
-                </p>
-              </div>
-              <div className="page">
-                <p className="page-text">
-                  You can also check off items by using the check-boxes.
-                </p>
-              </div>
-              <div className="page">
-                <p className="page-text">
-                  Once your list is complete you can choose how you would like
-                  to see the items displayed with the 'sort list' drop-box.
-                </p>
-              </div>
-              <div className="page">
-                <p className="page-text">
-                  You can also stylize your items using the 'stylize' button.
-                </p>
-              </div>
-              <div className="page">
-                <p className="page-text">
-                  Enjoy making your lists and check back for new features in the
-                  future!
-                </p>
-              </div>
-            </Slider>
+
+            <Slider />
 
             <Modal
               modal={this.triggerModal}
