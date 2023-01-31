@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./CreateTask.scss";
-import { isValidTextFields } from "../isValidTextFields";
+// import { isValidTextFields } from "../isValidTextFields";
 
 class CreateTask extends Component {
   constructor(props) {

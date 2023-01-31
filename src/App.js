@@ -8,10 +8,13 @@ import Sort from "./components/Sort";
 import Modal from "./components/Modal";
 import Slider from "./components/Slider";
 
+import { API_URL } from "./config/Api";
 import { sendRequest } from "./helpers";
 import { sortArrayTasks } from "./helpers/sort";
 
 import "./style/Reset.scss";
+
+// const{ } = process.env
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +27,9 @@ class App extends Component {
       //local state to modal
       modal: false,
       modalTitle: "",
-      whatDelet: NaN,
+      whatDelet: null,
+
+      slider: false,
     };
 
     this.addTask = this.addTask.bind(this);
@@ -36,14 +41,16 @@ class App extends Component {
     this.modalConfirm = this.modalConfirm.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.resetListTask = this.resetListTask.bind(this);
+    this.onSliderBtn = this.onSliderBtn.bind(this);
   }
 
   componentDidMount() {
     this.updatePage();
+    //  this.onSliderBtn();
   }
 
   updatePage() {
-    sendRequest("http://localhost:3001/todos", "GET")
+    sendRequest(API_URL, "GET")
       .then((result) => sortArrayTasks(result, this.state.sortSelector))
       .then((array) =>
         this.setState({
@@ -62,11 +69,10 @@ class App extends Component {
       [...this.state.arrayTask, newTaskObject],
       sortSelector
     );
-    sendRequest("http://localhost:3001/todos", "POST", newTaskObject).then(
-      (arrayTask) =>
-        this.setState({
-          arrayTask: newArray,
-        })
+    sendRequest(API_URL, "POST", newTaskObject).then((arrayTask) =>
+      this.setState({
+        arrayTask: newArray,
+      })
     );
   }
 
@@ -75,11 +81,7 @@ class App extends Component {
       ? (arrayTask.isCheck = true)
       : (arrayTask.isCheck = false);
 
-    sendRequest(
-      `http://localhost:3001/todos/${arrayTask.id}`,
-      "PUT",
-      arrayTask
-    );
+    sendRequest(`${API_URL}/${arrayTask.id}`, "PUT", arrayTask);
     this.updatePage();
   }
 
@@ -94,11 +96,17 @@ class App extends Component {
       description: dataChange.description,
     };
 
-    sendRequest(
-      `http://localhost:3001/todos/${arrayTask.id}`,
-      "PATCH",
-      editedTask
+    sendRequest(`${API_URL}/${arrayTask.id}`, "PATCH", editedTask);
+    this.updatePage();
+  }
+
+  deleteTask(arrayTask) {
+    sendRequest(`${API_URL}/${arrayTask.id}`, "DELETE").then((arrayTask) =>
+      this.setState({
+        arrayTask: this.state.arrayTask.filter((el) => el.id !== arrayTask.id),
+      })
     );
+
     this.updatePage();
   }
 
@@ -141,24 +149,17 @@ class App extends Component {
     }
   };
 
-  deleteTask(arrayTask) {
-    sendRequest(`http://localhost:3001/todos/${arrayTask.id}`, "DELETE").then(
-      (arrayTask) =>
-        this.setState({
-          arrayTask: this.state.arrayTask.filter(
-            (el) => el.id !== arrayTask.id
-          ),
-        })
-    );
-
+  resetListTask(arrayTask) {
+    arrayTask.map((el) => {
+      sendRequest(`${API_URL}/${el.id}`, "DELETE");
+    });
     this.updatePage();
   }
 
-  resetListTask(arrayTask) {
-    arrayTask.map((el) => {
-      sendRequest(`http://localhost:3001/todos/${el.id}`, "DELETE");
-    });
-    this.updatePage();
+  onSliderBtn() {
+    this.setState(
+      this.state.slider === false ? { slider: true } : { slider: false }
+    );
   }
 
   render() {
@@ -181,7 +182,14 @@ class App extends Component {
               modalConfirm={this.modalConfirm}
             />
 
-            <Slider />
+            {this.state.slider === false ? (
+              <></>
+            ) : (
+              <Slider
+                slider={this.state.slider}
+                onSliderBtn={this.onSliderBtn}
+              />
+            )}
 
             <Modal
               modal={this.triggerModal}
@@ -196,6 +204,7 @@ class App extends Component {
             state={this.state}
             modal={this.triggerModal}
             onSortBtn={this.onSortBtn}
+            onSliderBtn={this.onSliderBtn}
           />
         </div>
       </div>

@@ -6,7 +6,11 @@ class Footer extends Component {
     return (
       <footer className="footer">
         <section className="footer__elem">
-          <button type="button" className="footer__elem-btn">
+          <button
+            type="button"
+            className="footer__elem-btn"
+            onClick={() => this.props.onSliderBtn()}
+          >
             <i className="alert bi bi-exclamation-circle"></i>
           </button>
           <button
