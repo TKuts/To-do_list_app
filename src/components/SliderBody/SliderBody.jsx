@@ -41,32 +41,24 @@ class SliderBody extends Component {
   render() {
     return (
       <section
-        className={this.props.slider ? "slider active" : "slider"}
-        onClick={() => this.props.onSliderBtn()}
+        className="slider__container"
+        onClick={(e) => e.stopPropagation()}
       >
-        <div className="slider__container" onClick={(e) => e.stopPropagation()}>
-          <button
-            className="slider-arrow"
-            onClick={() => this.arrowLeftClick()}
-          >
-            &#10094;
-          </button>
+        <button className="slider-arrow" onClick={() => this.arrowLeftClick()}>
+          &#10094;
+        </button>
 
-          <div className="window" onClick={() => this.arrowRightClick()}>
-            <div className="page">
-              <div className="page-text">
-                {this.state.allFlashCard[this.state.shiftPage]}
-              </div>
+        <div className="window" onClick={() => this.arrowRightClick()}>
+          <div className="page">
+            <div className="page-text">
+              {this.state.allFlashCard[this.state.shiftPage]}
             </div>
           </div>
-
-          <button
-            className="slider-arrow"
-            onClick={() => this.arrowRightClick()}
-          >
-            &#10095;
-          </button>
         </div>
+
+        <button className="slider-arrow" onClick={() => this.arrowRightClick()}>
+          &#10095;
+        </button>
       </section>
     );
   }

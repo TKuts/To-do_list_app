@@ -205,6 +205,7 @@ class App extends Component {
             modal={this.triggerModal}
             onSortBtn={this.onSortBtn}
             onSliderBtn={this.onSliderBtn}
+            slider={this.state.slider}
           />
         </div>
       </div>
