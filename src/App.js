@@ -6,7 +6,7 @@ import ListTask from "./components/ListTask";
 import Footer from "./components/Footer";
 import Sort from "./components/Sort";
 import Modal from "./components/Modal";
-import Slider from "./components/Slider";
+import Tutorial from "./components/Tutorial";
 
 import { API_URL } from "./config/Api";
 import { sendRequest } from "./helpers";
@@ -14,13 +14,19 @@ import { sortArrayTasks } from "./helpers/sort";
 
 import "./style/Reset.scss";
 
-// const{ } = process.env
-
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      defaultTast: [
+        {
+          id: 1,
+          title: "Task #1",
+          description: "Task #1 Description:",
+        },
+      ],
+
       arrayTask: [],
       sort: false,
       sortSelector: "old",
@@ -58,9 +64,6 @@ class App extends Component {
         })
       );
   }
-  // get Message(){
-  //   return 1
-  // }
 
   addTask(newTaskObject) {
     let sortSelector = this.state.sortSelector;
@@ -174,18 +177,21 @@ class App extends Component {
             ) : (
               <Sort sort={this.sort} state={this.state} />
             )}
+
             <ListTask
               state={this.state.arrayTask}
               onEdit={this.editTask}
               onCheck={this.onCheck}
               modal={this.triggerModal}
               modalConfirm={this.modalConfirm}
+              slider={this.state.slider}
+              defaultTast={this.state.defaultTast}
             />
 
             {this.state.slider === false ? (
               <></>
             ) : (
-              <Slider
+              <Tutorial
                 slider={this.state.slider}
                 onSliderBtn={this.onSliderBtn}
               />

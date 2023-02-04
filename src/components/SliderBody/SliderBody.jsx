@@ -19,12 +19,18 @@ class SliderBody extends Component {
       shiftPage: 0,
     };
   }
+  // shiftPage === allFlashCard.index + 1
+
+  // arrayClick(){allFlashCard.index + 1}
+
+  // if(allFlashCard[index] <= allFlashCard.length )
 
   arrowLeftClick() {
     if (this.state.shiftPage !== 0) {
       this.setState({
         shiftPage: this.state.shiftPage - 1,
       });
+      this.props.position(this.state.shiftPage - 1);
     }
   }
 
@@ -33,6 +39,7 @@ class SliderBody extends Component {
       this.setState({
         shiftPage: this.state.shiftPage + 1,
       });
+      this.props.position(this.state.shiftPage + 1);
     } else {
       this.props.onSliderBtn();
     }

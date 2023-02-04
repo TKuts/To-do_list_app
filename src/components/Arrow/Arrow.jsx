@@ -4,9 +4,9 @@ import "./Arrow.scss";
 class Arrow extends Component {
   render() {
     return (
-      <div class="arrow">
-        <div class="curve"></div>
-        <div class="point"></div>
+      <div className={`arrow arrow${this.props.styleArrow}`}>
+        <div className="curve"></div>
+        <div className="point"></div>
       </div>
     );
   }

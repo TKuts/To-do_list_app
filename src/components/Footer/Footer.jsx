@@ -22,7 +22,7 @@ class Footer extends Component {
             type="button"
             className="footer__elem-btn"
             style={{
-              "pointer-events": this.props.slider ? "none" : " all",
+              pointerEvents: this.props.slider ? "none" : " all",
             }}
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
@@ -34,7 +34,7 @@ class Footer extends Component {
             type="button"
             className="footer__elem-btn"
             style={{
-              "pointer-events": this.props.slider ? "none" : " all",
+              pointerEvents: this.props.slider ? "none" : " all",
             }}
           >
             <i className="format bi bi-info-square"></i>
@@ -46,7 +46,7 @@ class Footer extends Component {
               this.props.onSortBtn();
             }}
             style={{
-              "pointer-events": this.props.slider ? "none" : " all",
+              pointerEvents: this.props.slider ? "none" : " all",
             }}
           >
             <i className="sort bi bi-sort-down"></i>
@@ -58,7 +58,7 @@ class Footer extends Component {
               this.props.modal("allTask", this.props.state.arrayTask);
             }}
             style={{
-              "pointer-events": this.props.slider ? "none" : " all",
+              pointerEvents: this.props.slider ? "none" : " all",
             }}
           >
             <i className="trash bi bi-trash3"></i>

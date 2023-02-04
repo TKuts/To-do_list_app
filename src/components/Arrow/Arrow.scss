@@ -1,9 +1,35 @@
 .arrow {
-  position: fixed;
-  //   position: relative;
+  position: relative;
   top: 0;
-  //   margin: 0 auto;
   width: 50px;
+  &.arrow0 {
+    display: none;
+  }
+  &.arrow1 {
+    transform: rotate(140deg);
+    top: 40px;
+    left: 180px;
+  }
+  &.arrow2 {
+    transform: scaleX(-1);
+    top: -20px;
+    left: 140px;
+  }
+  &.arrow3 {
+    transform: rotate(-30deg);
+    top: -25px;
+    left: 300px;
+  }
+  &.arrow4 {
+    transform: scaleX(-1) rotate(-36deg);
+    top: -25px;
+    right: 360px;
+  }
+  &.arrow5 {
+    transform: rotate(-30deg);
+    top: -25px;
+    left: 15px;
+  }
 }
 
 .arrow .curve {
