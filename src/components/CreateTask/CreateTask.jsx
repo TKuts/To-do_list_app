@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./CreateTask.scss";
-// import { isValidTextFields } from "../isValidTextFields";
 
 class CreateTask extends Component {
   constructor(props) {
@@ -36,6 +35,7 @@ class CreateTask extends Component {
         description: "",
       });
     };
+
     const validation = (firstValue, secondValue) => {
       if (firstValue !== "" && secondValue !== "") {
         this.props.onAdd({

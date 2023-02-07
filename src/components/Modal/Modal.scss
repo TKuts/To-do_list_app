@@ -1,3 +1,6 @@
+@import "../../style/mixins";
+@import "../../style/colors";
+
 .modal {
   height: 100vh;
   width: 100vw;
@@ -5,9 +8,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include centerRow;
   opacity: 0;
   pointer-events: none;
   transition: 0.4s;
@@ -18,49 +19,40 @@
   pointer-events: all;
 }
 .modal__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include centerColumn;
   flex-wrap: nowrap;
   padding: 20px;
   border-radius: 12px;
-  background-color: #acd4e1;
+  background-color: $light-turquoise;
   height: 20vh;
   width: 50vw;
   transform: scale(0.5);
   transition: 0.3s all;
+
   &-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include centerColumn;
   }
   &-title {
-    font-family: "Monda", sans-serif;
-    font-weight: 400;
+    @include fontAndWeight;
     font-size: calc(20px + 8 * (100vw / 1280));
     line-height: 24px;
-    color: #000000;
+    color: $black;
     margin-bottom: 37px;
   }
 }
 .section__buttons {
   display: flex;
-
   &-once {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Monda", sans-serif;
-    font-weight: 400;
+    @include centerRow;
+    @include fontAndWeight;
     font-size: calc(18px + 8 * (100vw / 1280));
     line-height: 18px;
-    color: #3e3b3b;
+    color: $dark-gray;
     height: 5vh;
     width: 10vw;
     padding: 16px 39px;
-    background: linear-gradient(90deg, #a8d2a5 0%, #acd4e1 115.2%);
-    box-shadow: 0px 4px 4px #acd4e1;
+    background: linear-gradient(90deg, $green 0%, $light-turquoise 115.2%);
+    box-shadow: 0px 4px 4px $light-turquoise;
     border-radius: 25px;
     cursor: pointer;
     margin-right: 20px;
@@ -93,10 +85,4 @@
       margin-right: 10px;
     }
   }
-}
-@media (min-width: 441px) and (max-width: 471px) {
-}
-@media (min-width: 471px) and (max-width: 580px) {
-}
-@media (min-width: 768px) and (max-width: 912px) {
 }

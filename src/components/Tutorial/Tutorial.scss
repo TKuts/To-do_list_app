@@ -1,13 +1,13 @@
+@import "../../style/mixins";
+@import "../../style/colors";
+
 .slider__wraper {
   height: 90vh;
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+  @include centerRow;
   opacity: 0;
   pointer-events: none;
   transition: 0.4s;
@@ -18,9 +18,7 @@
   pointer-events: all;
 }
 .position {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include centerColumn;
   justify-content: center;
   &.position1 {
     padding-top: 170px;
@@ -37,5 +35,185 @@
   }
   &.position5 {
     padding-top: 500px;
+  }
+}
+@media (min-width: 360px) and (max-width: 373px) {
+  .position {
+    &.position1 {
+      padding-top: 300px;
+    }
+    &.position2 {
+      padding-top: 400px;
+    }
+    &.position3 {
+      padding-top: 35px;
+    }
+    &.position4 {
+      padding-top: 35px;
+    }
+    &.position5 {
+      padding-top: 450px;
+    }
+    &.position6 {
+      padding-top: 450px;
+    }
+  }
+}
+@media (min-width: 374px) and (max-width: 389px) {
+  .position {
+    &.position1 {
+      padding-top: 300px;
+      flex-direction: column-reverse;
+    }
+    &.position2 {
+      padding-top: 400px;
+    }
+    &.position3 {
+      padding-top: 200px;
+    }
+    &.position4 {
+      padding-top: 200px;
+    }
+    &.position5 {
+      padding-top: 450px;
+    }
+    &.position6 {
+      padding-top: 450px;
+    }
+  }
+}
+@media (min-width: 390px) and (max-width: 412px) {
+  .position {
+    &.position1 {
+      padding-top: 250px;
+      flex-direction: column-reverse;
+    }
+    &.position2 {
+      padding-top: 600px;
+    }
+    &.position3 {
+      padding-bottom: 50px;
+    }
+    &.position4 {
+      padding-bottom: 50px;
+    }
+    &.position5 {
+      padding-top: 600px;
+    }
+    &.position6 {
+      padding-top: 600px;
+    }
+  }
+}
+@media (min-width: 413px) and (max-width: 440px) {
+  .position {
+    &.position1 {
+      padding-top: 300px;
+      flex-direction: column-reverse;
+    }
+    &.position2 {
+      padding-top: 560px;
+    }
+    &.position3 {
+      padding-bottom: 150px;
+    }
+    &.position4 {
+      padding-bottom: 150px;
+    }
+    &.position5 {
+      padding-top: 590px;
+    }
+    &.position6 {
+      padding-top: 600px;
+    }
+  }
+}
+
+@media (min-width: 499px) and (max-width: 767px) {
+  .position {
+    &.position1 {
+      padding-top: 250px;
+    }
+    &.position2 {
+      padding-top: 650px;
+    }
+    &.position3 {
+      padding-bottom: 240px;
+    }
+    &.position4 {
+      padding-bottom: 240px;
+    }
+    &.position5 {
+      padding-top: 660px;
+    }
+    &.position6 {
+      padding-top: 660px;
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 818px) {
+  .position {
+    &.position1 {
+      padding-top: 100px;
+    }
+    &.position2 {
+      padding-top: 780px;
+    }
+    &.position3 {
+      padding-bottom: 300px;
+    }
+    &.position4 {
+      padding-bottom: 300px;
+    }
+    &.position5 {
+      padding-top: 730px;
+    }
+    &.position6 {
+      padding-top: 730px;
+    }
+  }
+}
+@media (min-width: 819px) and (max-width: 1000px) {
+  .position {
+    &.position1 {
+      padding-bottom: 270px;
+    }
+    &.position2 {
+      padding-top: 1000px;
+    }
+    &.position3 {
+      padding-bottom: 500px;
+    }
+    &.position4 {
+      padding-bottom: 500px;
+    }
+    &.position5 {
+      padding-top: 970px;
+    }
+    &.position6 {
+      padding-top: 1000px;
+    }
+  }
+}
+@media (min-width: 1120px) {
+  .position {
+    &.position1 {
+      padding-bottom: 100px;
+    }
+    &.position2 {
+      padding-top: 700px;
+    }
+    &.position3 {
+      padding-bottom: 200px;
+    }
+    &.position4 {
+      padding-bottom: 200px;
+    }
+    &.position5 {
+      padding-top: 690px;
+    }
+    &.position6 {
+      padding-top: 700px;
+    }
   }
 }

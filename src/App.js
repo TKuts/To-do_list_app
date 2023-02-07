@@ -9,10 +9,14 @@ import Modal from "./components/Modal";
 import Tutorial from "./components/Tutorial";
 
 import { API_URL } from "./config/Api";
-import { sendRequest } from "./helpers";
+import { sendRequest } from "./helpers/sendRequest";
 import { sortArrayTasks } from "./helpers/sort";
 
 import "./style/Reset.scss";
+
+// require().config();
+// const { REACT_APP_API_URL } = process.env;
+// console.log("env", REACT_APP_API_URL);
 
 class App extends Component {
   constructor(props) {
@@ -26,15 +30,12 @@ class App extends Component {
           description: "Task #1 Description:",
         },
       ],
-
       arrayTask: [],
       sort: false,
       sortSelector: "old",
-      //local state to modal
       modal: false,
       modalTitle: "",
       whatDelet: null,
-
       slider: false,
     };
 
@@ -63,6 +64,7 @@ class App extends Component {
           arrayTask: array,
         })
       );
+    // .catch((error) => console.error("error"));
   }
 
   addTask(newTaskObject) {
@@ -80,18 +82,14 @@ class App extends Component {
   }
 
   onCheck(arrayTask) {
-    arrayTask.isCheck === false
-      ? (arrayTask.isCheck = true)
-      : (arrayTask.isCheck = false);
+    arrayTask.isCheck = !arrayTask.isCheck;
 
     sendRequest(`${API_URL}/${arrayTask.id}`, "PUT", arrayTask);
     this.updatePage();
   }
 
   editTask(arrayTask, dataChange) {
-    arrayTask.editForm === false
-      ? (arrayTask.editForm = true)
-      : (arrayTask.editForm = false);
+    arrayTask.editForm = !arrayTask.editForm;
 
     const editedTask = {
       ...arrayTask,
@@ -114,7 +112,7 @@ class App extends Component {
   }
 
   onSortBtn() {
-    this.setState(this.state.sort === false ? { sort: true } : { sort: false });
+    this.setState({ sort: !this.state.sort });
   }
 
   sort(sortedArray, sortSelector) {
@@ -145,11 +143,9 @@ class App extends Component {
   };
 
   modalConfirm = () => {
-    if (this.state.modalTitle === "Do you want to delete this items?") {
-      this.deleteTask(this.state.whatDelet);
-    } else {
-      this.resetListTask(this.state.whatDelet);
-    }
+    this.state.modalTitle === "Do you want to delete this items?"
+      ? this.deleteTask(this.state.whatDelet)
+      : this.resetListTask(this.state.whatDelet);
   };
 
   resetListTask(arrayTask) {
@@ -160,9 +156,7 @@ class App extends Component {
   }
 
   onSliderBtn() {
-    this.setState(
-      this.state.slider === false ? { slider: true } : { slider: false }
-    );
+    this.setState({ slider: !this.state.slider });
   }
 
   render() {

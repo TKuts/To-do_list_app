@@ -1,0 +1,22 @@
+@import "./fonts";
+
+@mixin fontAndWeight {
+  font-family: $fontFamilyMonda;
+  font-weight: 400;
+}
+
+@mixin fontAndWeightHigh {
+  font-family: $fontFamilyMonda;
+  font-weight: 700;
+}
+
+@mixin centerColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@mixin centerRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,4 +1,4 @@
-const sendRequest = async (url, type, data) => {
+export const sendRequest = async (url, type, data) => {
   if (type === "POST" || type === "PUT" || type === "PATCH") {
     const respons = await fetch(url, {
       method: type,
@@ -22,5 +22,3 @@ const sendRequest = async (url, type, data) => {
     return resuly;
   }
 };
-
-export default sendRequest;

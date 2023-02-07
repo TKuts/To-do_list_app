@@ -1,0 +1,75 @@
+@import "../../style/mixins";
+@import "../../style/colors";
+
+.slider__container {
+  @include centerRow;
+  width: 50vw;
+  margin: 10px 0 10px 0;
+  background: #86a8b3a6;
+  backdrop-filter: blur(2px);
+  box-shadow: 0px 4px 4px $light-turquoise;
+  border-radius: 25px;
+}
+.window {
+  @include centerRow;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.page {
+  &-text {
+    @include fontAndWeight;
+    font-size: 18px;
+    line-height: 29px;
+    margin: 27px 0 27px 0;
+    color: black;
+  }
+}
+
+.slider-arrow {
+  height: 100%;
+  font-size: 20px;
+  padding: 0px 18px 0px 34px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:last-child {
+    padding: 0px 34px 0px 18px;
+  }
+}
+@media (min-width: 360px) and (max-width: 373px) {
+  .slider__container {
+    height: 30vh;
+    width: 85vw;
+  }
+  .page-text {
+    font-size: 14px;
+    line-height: 25px;
+  }
+}
+@media (min-width: 374px) and (max-width: 400px) {
+  .slider__container {
+    height: 20vh;
+    width: 85vw;
+  }
+  .page-text {
+    font-size: 14px;
+    line-height: 25px;
+  }
+}
+@media (min-width: 401px) and (max-width: 440px) {
+  .slider__container {
+    height: 25vh;
+    width: 85vw;
+  }
+  .page-text {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 471px) and (max-width: 580px) {
+  .slider__container {
+    height: 25vh;
+    width: 85vw;
+  }
+}

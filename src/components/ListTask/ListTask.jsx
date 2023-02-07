@@ -8,14 +8,7 @@ class ListTask extends Component {
       return (
         <ul className="render__task">
           {this.props.defaultTast.map((el) => (
-            <ItemTask
-              key={el.id}
-              itemTask={el}
-              // onEdit={this.props.onEdit}
-              // onCheck={this.props.onCheck}
-              // modal={this.props.modal}
-              // modalConfirm={this.props.modalConfirm}
-            />
+            <ItemTask key={el.id} itemTask={el} />
           ))}
         </ul>
       );

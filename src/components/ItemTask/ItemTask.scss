@@ -1,17 +1,15 @@
-.render__task-wraper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin-bottom: 24px;
-}
+@import "../../style/mixins";
+@import "../../style/colors";
 
-.task {
-  display: flex;
+.render__task-wraper {
+  @include centerColumn;
   justify-content: center;
-  align-items: center;
+  margin-bottom: 14px;
+}
+.task {
+  @include centerRow;
   width: 100%;
-  border-bottom: 2px solid #3e3b3b;
+  border-bottom: 2px solid $dark-gray;
   &__btn {
     margin-right: 24px;
     border: 0;
@@ -27,17 +25,15 @@
   font-size: 26px;
 }
 .task-title {
-  font-family: "Monda", sans-serif;
-  font-weight: 400;
+  @include fontAndWeight;
   font-size: 18px;
   line-height: 29px;
   color: #3e3b3b;
   width: 720px;
-  padding-left: 22px;
+  padding-left: 18px;
   border: none;
   outline: none;
 }
-
 .task-description {
   font-family: "Monda", sans-serif;
   height: 80px;
@@ -45,7 +41,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 23px;
-  color: #3e3b3b;
+  color: $dark-gray;
   display: block;
   width: 100%;
   border: none;
@@ -55,12 +51,6 @@
     width: 0px;
   }
 }
-
-.cross-out {
-  text-decoration-line: line-through;
-  color: #c4c4c4;
-}
-
 @media (min-width: 360px) and (max-width: 400px) {
   .render__task {
     padding: 0;
@@ -85,7 +75,6 @@
   .check-false {
     font-size: 20px;
   }
-
   .pencil {
     font-size: 20px;
   }
@@ -117,7 +106,6 @@
   .check-false {
     font-size: 25px;
   }
-
   .pencil {
     font-size: 25px;
   }
@@ -133,7 +121,6 @@
       margin-bottom: 25px;
     }
   }
-
   .task-title {
     width: 220px;
     padding-left: 15px;
@@ -147,7 +134,6 @@
       margin-bottom: 25px;
     }
   }
-
   .task-title {
     width: 250px;
     padding-left: 15px;
@@ -161,7 +147,6 @@
       margin-bottom: 25px;
     }
   }
-
   .task-title {
     width: 630px;
     padding-left: 15px;

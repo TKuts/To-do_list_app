@@ -1,10 +1,11 @@
+@import "../../style/mixins";
+@import "../../style/colors";
 .render__task {
   margin-bottom: 34px;
   &-title {
-    font-family: "Monda", sans-serif;
-    font-weight: 00;
+    @include fontAndWeight;
     font-size: 28px;
     line-height: 48px;
-    color: #000000;
+    color: $black;
   }
 }

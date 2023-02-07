@@ -1,3 +1,5 @@
+@import "../../style/colors";
+
 .arrow {
   position: relative;
   top: 0;
@@ -30,11 +32,15 @@
     top: -25px;
     left: 15px;
   }
+
+  &.arrow7 {
+    display: none;
+  }
 }
 
 .arrow .curve {
-  border: 2px solid red;
-  border-color: transparent transparent transparent red;
+  border: 2px solid $red;
+  border-color: transparent transparent transparent $red;
   height: 150px;
   width: 100px;
   border-radius: 230px 0 0 150px;
@@ -49,7 +55,7 @@
 .arrow .point:before,
 .arrow .point:after {
   content: "";
-  border: 1px solid red;
+  border: 1px solid $red;
   height: 25px;
   position: absolute;
 }
@@ -64,4 +70,264 @@
   top: -20px;
   left: 5px;
   transform: rotate(12deg);
+}
+@media (min-width: 360px) and (max-width: 373px) {
+  .arrow {
+    width: 6px;
+    &.arrow1 {
+      transform: rotate(153deg);
+      top: 77px;
+      left: 161px;
+    }
+    &.arrow2 {
+      transform: scaleX(-1);
+      top: -27px;
+      left: 160px;
+    }
+    &.arrow3 {
+      transform: rotate(-38deg);
+      top: -27px;
+      left: 27px;
+    }
+    &.arrow4 {
+      transform: scaleX(-1) rotate(-38deg);
+      top: -27px;
+      right: 87px;
+    }
+    &.arrow5 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: 15px;
+    }
+    &.arrow6 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: -59px;
+    }
+  }
+}
+@media (min-width: 374px) and (max-width: 389px) {
+  .arrow {
+    width: 6px;
+    &.arrow1 {
+      transform: rotate(153deg);
+      top: 64px;
+      left: 161px;
+    }
+    &.arrow2 {
+      transform: scaleX(-1);
+      top: -27px;
+      left: 160px;
+    }
+    &.arrow3 {
+      transform: rotate(-38deg);
+      top: -27px;
+      left: 27px;
+    }
+    &.arrow4 {
+      transform: scaleX(-1) rotate(-38deg);
+      top: -27px;
+      right: 87px;
+    }
+    &.arrow5 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: 15px;
+    }
+    &.arrow6 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: -59px;
+    }
+  }
+}
+@media (min-width: 390px) and (max-width: 412px) {
+  .arrow {
+    &.arrow1 {
+      transform: rotate(153deg);
+      top: 46px;
+      left: 147px;
+    }
+    &.arrow2 {
+      transform: scaleX(-1);
+      top: -32px;
+      left: 155px;
+    }
+    &.arrow3 {
+      transform: rotate(-38deg);
+      left: 36px;
+    }
+    &.arrow4 {
+      transform: scaleX(-1) rotate(-38deg);
+      right: 100px;
+    }
+    &.arrow5 {
+      transform: rotate(-30deg);
+      left: 32px;
+    }
+    &.arrow6 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: -42px;
+    }
+  }
+}
+@media (min-width: 413px) and (max-width: 440px) {
+  .arrow {
+    &.arrow1 {
+      transform: rotate(153deg);
+      top: 32px;
+      left: 89px;
+    }
+    &.arrow2 {
+      transform: scaleX(-1);
+      top: -27px;
+      left: 160px;
+    }
+    &.arrow3 {
+      transform: rotate(-38deg);
+      top: -27px;
+      left: 27px;
+    }
+    &.arrow4 {
+      transform: scaleX(-1) rotate(-38deg);
+      top: -27px;
+      right: 107px;
+    }
+    &.arrow5 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: 35px;
+    }
+    &.arrow6 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: -43px;
+    }
+  }
+}
+@media (min-width: 499px) and (max-width: 767px) {
+  .arrow {
+    &.arrow1 {
+      transform: rotate(153deg);
+      top: 32px;
+      left: 89px;
+    }
+    &.arrow2 {
+      transform: scaleX(-1);
+      top: -27px;
+      left: 150px;
+    }
+    &.arrow3 {
+      transform: rotate(-38deg);
+      top: -27px;
+      left: 27px;
+    }
+    &.arrow4 {
+      transform: rotate(-20deg);
+      // top: -27px;
+      right: 200px;
+    }
+    &.arrow5 {
+      transform: rotate(-30deg);
+      left: 20px;
+    }
+    &.arrow6 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: -70px;
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 818px) {
+  .arrow {
+    &.arrow1 {
+      transform: rotate(153deg);
+      top: 32px;
+      left: 89px;
+    }
+    &.arrow2 {
+      transform: scaleX(-1);
+      top: -27px;
+      left: 150px;
+    }
+    &.arrow3 {
+      transform: rotate(-38deg);
+      left: 190px;
+    }
+    &.arrow4 {
+      transform: rotate(34deg);
+
+      right: 275px;
+    }
+    &.arrow5 {
+      transform: rotate(-30deg);
+      left: 10px;
+    }
+    &.arrow6 {
+      transform: rotate(-26deg);
+      top: -25px;
+      left: -74px;
+    }
+  }
+}
+
+@media (min-width: 819px) and (max-width: 1000px) {
+  .arrow {
+    &.arrow1 {
+      transform: rotate(153deg);
+      top: 32px;
+      left: 89px;
+    }
+    &.arrow2 {
+      transform: scaleX(-1);
+      top: -27px;
+      left: 138px;
+    }
+    &.arrow3 {
+      transform: rotate(-38deg);
+      left: 185px;
+    }
+    &.arrow4 {
+      transform: rotate(32deg);
+      top: -27px;
+      right: 277px;
+    }
+    &.arrow5 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: 13px;
+    }
+    &.arrow6 {
+      transform: rotate(-30deg);
+      top: -25px;
+      left: -74px;
+    }
+  }
+}
+
+@media (min-width: 1120px) {
+  .arrow {
+    &.arrow2 {
+      top: -27px;
+      left: 150px;
+    }
+    &.arrow3 {
+      transform: rotate(-40deg);
+      left: 280px;
+    }
+    &.arrow4 {
+      transform: rotate(32deg);
+      top: -40px;
+      right: 375px;
+    }
+    &.arrow5 {
+      transform: rotate(-20deg);
+    }
+    &.arrow6 {
+      transform: rotate(-20deg);
+      top: -25px;
+      left: -74px;
+    }
+  }
 }

@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap");
+@import "../../style/mixins";
+@import "../../style/colors";
+
 html,
 body {
   height: 100%;
@@ -11,31 +13,24 @@ body {
 .wraper {
   width: 1200px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include centerColumn;
   padding: 0px 10px 0px 10px;
   overflow: hidden;
 }
-// ============
-
-// ===============
 .main {
-  display: flex;
-  flex-direction: column;
+  @include centerColumn;
   justify-content: center;
-  align-items: center;
   text-align: center;
 }
-
 .check-true {
   font-size: 30px;
-  color: #156b2d;
+  color: $khaki;
   pointer-events: none;
 }
+
 .check-false {
   font-size: 30px;
-  color: #a09d9d;
+  color: $light-gray;
   pointer-events: none;
 }
 .display {
@@ -43,12 +38,13 @@ body {
 }
 .pencil {
   font-size: 25px;
-  color: #156b2d;
+  color: $khaki;
   pointer-events: none;
 }
+
 .bin {
   font-size: 25px;
-  color: #bc0808;
+  color: $greyish-red;
   pointer-events: none;
 }
 
@@ -60,12 +56,11 @@ body {
   margin: 30px 0 43px 0;
   position: relative;
   &__title {
-    font-family: "Monda", sans-serif;
-    font-weight: 700;
+    @include fontAndWeightHigh;
     font-size: 48px;
     line-height: 78px;
     letter-spacing: 0.25em;
-    color: #000000;
+    color: $black;
     display: block;
     position: relative;
     z-index: 2;
@@ -77,10 +72,10 @@ body {
     width: 547.07px;
     height: 240px;
     border-radius: 50%;
-    background-color: #acd4e1;
+    background-color: $light-turquoise;
     right: 54px;
     top: -171px;
-    box-shadow: 20px 40px #c8e3ec;
+    box-shadow: 20px 40px $dark-turquoise;
 
     &:before {
       content: "";
@@ -90,7 +85,7 @@ body {
       width: 547.07px;
       height: 302px;
       border-radius: 50%;
-      background-color: #acd4e1;
+      background-color: $light-turquoise;
       right: -242px;
       right: -308px;
       top: 0px;
@@ -106,7 +101,7 @@ body {
       right: -242px;
       right: -308px;
       top: 0px;
-      box-shadow: -10px 40px #c8e3ec;
+      box-shadow: -10px 40px $dark-turquoise;
       z-index: -1;
     }
   }

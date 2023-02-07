@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./SliderBody.scss";
+import "./Slider.scss";
 
-class SliderBody extends Component {
+class Slider extends Component {
   constructor(props) {
     super(props);
 
@@ -19,11 +19,6 @@ class SliderBody extends Component {
       shiftPage: 0,
     };
   }
-  // shiftPage === allFlashCard.index + 1
-
-  // arrayClick(){allFlashCard.index + 1}
-
-  // if(allFlashCard[index] <= allFlashCard.length )
 
   arrowLeftClick() {
     if (this.state.shiftPage !== 0) {
@@ -71,4 +66,4 @@ class SliderBody extends Component {
   }
 }
 
-export default SliderBody;
+export default Slider;

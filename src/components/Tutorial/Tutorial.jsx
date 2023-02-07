@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Tutorial.scss";
-import SliderBody from "../SliderBody";
+import Slider from "../Slider";
 import Arrow from "../Arrow";
 
 class Tutorial extends Component {
@@ -25,11 +25,8 @@ class Tutorial extends Component {
           this.props.slider ? "slider__wraper active" : "slider__wraper"
         }
       >
-        <div
-          className={`position position${this.state.styleArrow}`}
-          //  className={this.state.styleArrow !== 1 ? "align" : "align reverse"}
-        >
-          <SliderBody
+        <div className={`position position${this.state.styleArrow}`}>
+          <Slider
             slider={this.props.slider}
             onSliderBtn={this.props.onSliderBtn}
             position={this.position}

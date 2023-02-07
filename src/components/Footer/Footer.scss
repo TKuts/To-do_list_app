@@ -1,9 +1,11 @@
+@import "../../style/colors";
+
 .footer {
   bottom: 0;
   margin-top: auto;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-  background: #acd4e1;
+  background: $light-turquoise;
   position: fixed;
 }
 
@@ -11,8 +13,6 @@
   display: flex;
   align-items: center;
   margin: 24px 248px;
-  //   color: rgba(0, 0, 0, 0.562);
-
   &-btn {
     border: 0;
     background: transparent;
@@ -50,21 +50,21 @@
 .alert {
   padding: 0;
   font-size: 25px;
-  color: #3e3b3b;
+  color: $dark-gray;
 }
 .share {
   font-size: 25px;
-  color: #3e3b3b;
+  color: $dark-gray;
 }
 .format {
   font-size: 25px;
-  color: #3e3b3b;
+  color: $dark-gray;
 }
 .sort {
   font-size: 25px;
-  color: #3e3b3b;
+  color: $dark-gray;
 }
 .trash {
   font-size: 25px;
-  color: #3e3b3b;
+  color: $dark-gray;
 }
