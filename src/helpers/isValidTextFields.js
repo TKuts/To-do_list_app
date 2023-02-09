@@ -1,21 +1,18 @@
-export function isValidTextFields(...args) {
-  return [...args].every((x) => {
-    if (x === "") {
-      return;
-    }
+export function isValidTextFields(firstValue, secondValue) {
+  let message;
+  if (firstValue === "" && secondValue === "") {
+    return (message = "Sorry, but you didn't enter Title and Description");
+  }
+  if (firstValue === "") {
+    return (message = "Please, enter Title");
+  }
+  if (secondValue === "") {
+    return (message = "Please, enter Descroption");
+  }
 
-    if (x.length < 1) {
-      return console.error("Longer word");
-    }
+  if (secondValue.length <= 3) {
+    return (message = "Please, enter a longer description ");
+  }
 
-    if (x.length >= 25) {
-      let error = "Shorter word";
-      return renderError;
-    }
-    if (typeof x !== "string") {
-      let error = "Write Text";
-      return renderError();
-    }
-    return true;
-  });
+  return (message = "OK");
 }

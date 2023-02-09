@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import "./CreateTask.scss";
 
+import { isValidTextFields } from "../../helpers/isValidTextFields";
+
 class CreateTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
       description: "",
-      errorMessage: {
-        title: false,
-        description: false,
-      },
+      errorMessage: "OK",
     };
   }
 
@@ -26,18 +25,9 @@ class CreateTask extends Component {
     const handleSummiteTask = (e) => {
       e.preventDefault();
 
-      validation(this.state.title, this.state.description);
-
-      this.myForm.reset(this.props.onAdd);
-
-      this.setState({
-        title: "",
-        description: "",
-      });
-    };
-
-    const validation = (firstValue, secondValue) => {
-      if (firstValue !== "" && secondValue !== "") {
+      if (
+        isValidTextFields(this.state.title, this.state.description) === "OK"
+      ) {
         this.props.onAdd({
           id: Date.now(),
           title: this.state.title,
@@ -45,19 +35,27 @@ class CreateTask extends Component {
           editForm: false,
           isCheck: false,
         });
-
         this.setState({
-          errorMessage: false,
+          errorMessage: isValidTextFields(
+            this.state.title,
+            this.state.description
+          ),
         });
-      } else if (firstValue == "") {
+      } else {
         this.setState({
-          errorMessage: { title: true },
-        });
-      } else if (secondValue == "") {
-        this.setState({
-          errorMessage: { description: true },
+          errorMessage: isValidTextFields(
+            this.state.title,
+            this.state.description
+          ),
         });
       }
+
+      this.myForm.reset(this.props.onAdd);
+
+      this.setState({
+        title: "",
+        description: "",
+      });
     };
 
     return (
@@ -69,7 +67,7 @@ class CreateTask extends Component {
           className="add__task-input error"
           id="titleInput"
           style={{
-            border: this.state.errorMessage.title ? "1px solid red" : "none",
+            border: this.state.errorMessage !== "OK" ? "2px solid red" : "none",
           }}
           onChange={(e) => handleChangeTitle(e)}
         />
@@ -79,19 +77,12 @@ class CreateTask extends Component {
           id="description"
           placeholder="Description"
           style={{
-            border: this.state.errorMessage.description
-              ? "2px solid red"
-              : "none",
+            border: this.state.errorMessage !== "OK" ? "2px solid red" : "none",
           }}
           onChange={handleChangeDescription}
         />
-        {this.state.errorMessage.title ? (
-          <p className="errorMessage">Please enter correct Tittle</p>
-        ) : (
-          <></>
-        )}
-        {this.state.errorMessage.description ? (
-          <p className="errorMessage">Please enter correct Description</p>
+        {this.state.errorMessage !== "OK" ? (
+          <p className="errorMessage">{this.state.errorMessage}</p>
         ) : (
           <></>
         )}

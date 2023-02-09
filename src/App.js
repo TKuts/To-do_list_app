@@ -68,6 +68,8 @@ class App extends Component {
   }
 
   addTask(newTaskObject) {
+    console.log(newTaskObject);
+
     let sortSelector = this.state.sortSelector;
 
     let newArray = sortArrayTasks(

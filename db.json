@@ -1,18 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 1675794611233,
-      "title": "ssad",
-      "description": "sasd",
-      "editForm": false,
-      "isCheck": false
-    },
-    {
-      "id": 1675794636268,
-      "title": "asddfg",
-      "description": "fsdgdfg",
-      "editForm": false,
-      "isCheck": false
-    }
-  ]
+  "todos": []
 }
