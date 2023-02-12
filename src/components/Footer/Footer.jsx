@@ -21,7 +21,9 @@ class Footer extends Component {
           <button
             type="button"
             className="footer__elem-btn"
-            onClick={() => this.props.onShareBtn()}
+            onClick={() => {
+              this.props.onShareBtn(), this.props.handleCopy();
+            }}
             style={{
               pointerEvents: this.props.slider ? "none" : " all",
             }}

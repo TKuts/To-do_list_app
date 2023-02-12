@@ -35,9 +35,7 @@ class App extends Component {
       select: false,
       consentSelect: "",
       sortSelector: "old",
-
       share: false,
-
       modal: false,
       modalTitle: "",
       whatDelet: null,
@@ -47,15 +45,15 @@ class App extends Component {
     this.addTask = this.addTask.bind(this);
     this.onCheck = this.onCheck.bind(this);
     this.editTask = this.editTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
+    this.onSliderBtn = this.onSliderBtn.bind(this);
+    this.onShareBtn = this.onShareBtn.bind(this);
     this.onFormatBtn = this.onFormatBtn.bind(this);
     this.onSortBtn = this.onSortBtn.bind(this);
-    this.onShareBtn = this.onShareBtn.bind(this);
-    this.sort = this.sort.bind(this);
-    this.triggerModal = this.triggerModal.bind(this);
-    this.modalConfirm = this.modalConfirm.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
     this.resetListTask = this.resetListTask.bind(this);
-    this.onSliderBtn = this.onSliderBtn.bind(this);
+    this.triggerModal = this.triggerModal.bind(this);
+    this.sort = this.sort.bind(this);
+    this.modalConfirm = this.modalConfirm.bind(this);
   }
 
   componentDidMount() {
@@ -75,8 +73,6 @@ class App extends Component {
   }
 
   addTask(newTaskObject) {
-    console.log(newTaskObject);
-
     let sortSelector = this.state.sortSelector;
 
     let newArray = sortArrayTasks(
@@ -119,10 +115,14 @@ class App extends Component {
 
     this.updatePage();
   }
+  onSliderBtn() {
+    this.setState({ slider: !this.state.slider });
+  }
 
   onShareBtn() {
     this.setState({ share: !this.state.share });
   }
+
   onFormatBtn() {
     this.setState({ select: !this.state.select, consentSelect: "format" });
   }
@@ -131,13 +131,26 @@ class App extends Component {
     this.setState({ select: !this.state.select, consentSelect: "sort" });
   }
 
-  sort(sortedArray, sortSelector) {
-    if (sortSelector !== this.state.sortSelector) {
-      this.setState({
-        arrayTask: sortedArray,
-        sortSelector: sortSelector,
-      });
-    }
+  resetListTask(arrayTask) {
+    arrayTask.map((el) => {
+      sendRequest(`${API_URL}/${el.id}`, "DELETE");
+    });
+    this.updatePage();
+  }
+
+  handleCopy() {
+    let copyTask = [];
+    sendRequest(API_URL, "GET")
+      .then((result) =>
+        result.map((el, index) =>
+          copyTask.push(
+            `Task №${index + 1} Title: ${el.title} Description: ${
+              el.description
+            }`
+          )
+        )
+      )
+      .then((copy) => navigator.clipboard.writeText(copyTask));
   }
 
   triggerModal = (props, whatDelet) => {
@@ -158,22 +171,20 @@ class App extends Component {
     }
   };
 
+  sort(sortedArray, sortSelector) {
+    if (sortSelector !== this.state.sortSelector) {
+      this.setState({
+        arrayTask: sortedArray,
+        sortSelector: sortSelector,
+      });
+    }
+  }
+
   modalConfirm = () => {
     this.state.modalTitle === "Do you want to delete this items?"
       ? this.deleteTask(this.state.whatDelet)
       : this.resetListTask(this.state.whatDelet);
   };
-
-  resetListTask(arrayTask) {
-    arrayTask.map((el) => {
-      sendRequest(`${API_URL}/${el.id}`, "DELETE");
-    });
-    this.updatePage();
-  }
-
-  onSliderBtn() {
-    this.setState({ slider: !this.state.slider });
-  }
 
   render() {
     return (
@@ -229,6 +240,7 @@ class App extends Component {
             state={this.state}
             modal={this.triggerModal}
             onShareBtn={this.onShareBtn}
+            handleCopy={this.handleCopy}
             onFormatBtn={this.onFormatBtn}
             onSortBtn={this.onSortBtn}
             onSliderBtn={this.onSliderBtn}
