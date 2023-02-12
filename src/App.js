@@ -9,15 +9,11 @@ import Modal from "./components/Modal";
 import Tutorial from "./components/Tutorial";
 import Share from "./components/Share";
 
-import { API_URL } from "./config/Api";
+// import { API_URL } from "./config/Api";
 import { sendRequest } from "./helpers/sendRequest";
 import { sortArrayTasks } from "./helpers/sort";
 
 import "./style/Reset.scss";
-
-// require().config();
-// const { REACT_APP_API_URL } = process.env;
-// console.log("env", REACT_APP_API_URL);
 
 class App extends Component {
   constructor(props) {
@@ -56,13 +52,15 @@ class App extends Component {
     this.modalConfirm = this.modalConfirm.bind(this);
   }
 
+  API = process.env.REACT_APP_API_URL;
+
   componentDidMount() {
     this.updatePage();
     //  this.onSliderBtn();
   }
 
   updatePage() {
-    sendRequest(API_URL, "GET")
+    sendRequest(this.API, "GET")
       .then((result) => sortArrayTasks(result, this.state.sortSelector))
       .then((array) =>
         this.setState({
@@ -79,7 +77,7 @@ class App extends Component {
       [...this.state.arrayTask, newTaskObject],
       sortSelector
     );
-    sendRequest(API_URL, "POST", newTaskObject).then((arrayTask) =>
+    sendRequest(this.API, "POST", newTaskObject).then((arrayTask) =>
       this.setState({
         arrayTask: newArray,
       })
@@ -89,7 +87,11 @@ class App extends Component {
   onCheck(arrayTask) {
     arrayTask.isCheck = !arrayTask.isCheck;
 
-    sendRequest(`${API_URL}/${arrayTask.id}`, "PUT", arrayTask);
+    sendRequest(
+      `${process.env.REACT_APP_API_URL}/${arrayTask.id}`,
+      "PUT",
+      arrayTask
+    );
     this.updatePage();
   }
 
@@ -102,12 +104,12 @@ class App extends Component {
       description: dataChange.description,
     };
 
-    sendRequest(`${API_URL}/${arrayTask.id}`, "PATCH", editedTask);
+    sendRequest(`${this.API}/${arrayTask.id}`, "PATCH", editedTask);
     this.updatePage();
   }
 
   deleteTask(arrayTask) {
-    sendRequest(`${API_URL}/${arrayTask.id}`, "DELETE").then((arrayTask) =>
+    sendRequest(`${this.API}/${arrayTask.id}`, "DELETE").then((arrayTask) =>
       this.setState({
         arrayTask: this.state.arrayTask.filter((el) => el.id !== arrayTask.id),
       })
@@ -133,14 +135,14 @@ class App extends Component {
 
   resetListTask(arrayTask) {
     arrayTask.map((el) => {
-      sendRequest(`${API_URL}/${el.id}`, "DELETE");
+      sendRequest(`${this.API}/${el.id}`, "DELETE");
     });
     this.updatePage();
   }
 
   handleCopy() {
     let copyTask = [];
-    sendRequest(API_URL, "GET")
+    sendRequest(this.API, "GET")
       .then((result) =>
         result.map((el, index) =>
           copyTask.push(
