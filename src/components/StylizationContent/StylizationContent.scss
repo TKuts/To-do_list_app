@@ -1,0 +1,20 @@
+@import "../../style/mixins";
+@import "../../style/colors";
+
+.select {
+  @include fontAndWeight;
+  font-size: 14px;
+  width: 290px;
+  box-shadow: 0px 2px 2px $light-turquoise;
+  appearance: none;
+  border: 1px solid $khaki;
+  border-radius: 25px;
+  padding: 10px 35px 10px 15px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 1px $khaki, 0px 0px 10px $dark-turquoise;
+  }
+}

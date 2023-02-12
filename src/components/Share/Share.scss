@@ -1,0 +1,27 @@
+@import "../../style/mixins";
+@import "../../style/colors";
+
+.share_wrapper {
+  @include centerColumn;
+  padding: 62px 34px;
+  background: linear-gradient(
+    90deg,
+    $trans-light-green 0%,
+    $light-turquoise 115.2%
+  );
+  box-shadow: 4px 4px 4px $transparent-black, -4px -4px 10px $light-green;
+  border-radius: 25px;
+}
+
+.share-img {
+  font-size: calc(26px + 7 * (100vw / 1200));
+  color: $khaki;
+  margin-bottom: 46px;
+  cursor: pointer;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.share-img:hover {
+  color: $white;
+}

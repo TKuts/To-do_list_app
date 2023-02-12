@@ -4,9 +4,10 @@ import Header from "./components/Header";
 import CreateTask from "./components/CreateTask";
 import ListTask from "./components/ListTask";
 import Footer from "./components/Footer";
-import Sort from "./components/Sort";
+import Select from "./components/Select";
 import Modal from "./components/Modal";
 import Tutorial from "./components/Tutorial";
+import Share from "./components/Share";
 
 import { API_URL } from "./config/Api";
 import { sendRequest } from "./helpers/sendRequest";
@@ -31,8 +32,12 @@ class App extends Component {
         },
       ],
       arrayTask: [],
-      sort: false,
+      select: false,
+      consentSelect: "",
       sortSelector: "old",
+
+      share: false,
+
       modal: false,
       modalTitle: "",
       whatDelet: null,
@@ -42,7 +47,9 @@ class App extends Component {
     this.addTask = this.addTask.bind(this);
     this.onCheck = this.onCheck.bind(this);
     this.editTask = this.editTask.bind(this);
+    this.onFormatBtn = this.onFormatBtn.bind(this);
     this.onSortBtn = this.onSortBtn.bind(this);
+    this.onShareBtn = this.onShareBtn.bind(this);
     this.sort = this.sort.bind(this);
     this.triggerModal = this.triggerModal.bind(this);
     this.modalConfirm = this.modalConfirm.bind(this);
@@ -113,8 +120,15 @@ class App extends Component {
     this.updatePage();
   }
 
+  onShareBtn() {
+    this.setState({ share: !this.state.share });
+  }
+  onFormatBtn() {
+    this.setState({ select: !this.state.select, consentSelect: "format" });
+  }
+
   onSortBtn() {
-    this.setState({ sort: !this.state.sort });
+    this.setState({ select: !this.state.select, consentSelect: "sort" });
   }
 
   sort(sortedArray, sortSelector) {
@@ -168,10 +182,10 @@ class App extends Component {
           <Header />
           <main className="main">
             <CreateTask onAdd={this.addTask} />
-            {this.state.sort === false ? (
+            {!this.state.select ? (
               <></>
             ) : (
-              <Sort sort={this.sort} state={this.state} />
+              <Select sort={this.sort} state={this.state} />
             )}
 
             <ListTask
@@ -184,7 +198,7 @@ class App extends Component {
               defaultTast={this.state.defaultTast}
             />
 
-            {this.state.slider === false ? (
+            {!this.state.slider ? (
               <></>
             ) : (
               <Tutorial
@@ -201,10 +215,21 @@ class App extends Component {
             >
               {this.state.modalTitle}
             </Modal>
+
+            {!this.state.share ? (
+              <></>
+            ) : (
+              <Share
+                statusShare={this.state.share}
+                onShareBtn={this.onShareBtn}
+              />
+            )}
           </main>
           <Footer
             state={this.state}
             modal={this.triggerModal}
+            onShareBtn={this.onShareBtn}
+            onFormatBtn={this.onFormatBtn}
             onSortBtn={this.onSortBtn}
             onSliderBtn={this.onSliderBtn}
             slider={this.state.slider}

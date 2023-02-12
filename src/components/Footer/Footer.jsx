@@ -21,11 +21,10 @@ class Footer extends Component {
           <button
             type="button"
             className="footer__elem-btn"
+            onClick={() => this.props.onShareBtn()}
             style={{
               pointerEvents: this.props.slider ? "none" : " all",
             }}
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
           >
             <i className="share bi bi-share"></i>
           </button>
@@ -33,11 +32,14 @@ class Footer extends Component {
           <button
             type="button"
             className="footer__elem-btn"
+            onClick={() => {
+              this.props.onFormatBtn();
+            }}
             style={{
               pointerEvents: this.props.slider ? "none" : " all",
             }}
           >
-            <i className="format bi bi-info-square"></i>
+            <i className="format bi bi-bounding-box-circles"></i>
           </button>
           <button
             type="button"
