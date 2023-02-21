@@ -9,7 +9,7 @@ import Modal from "./components/Modal";
 import Tutorial from "./components/Tutorial";
 import Share from "./components/Share";
 
-// import { API_URL } from "./config/Api";
+import { API_URL } from "./config/Api";
 import { sendRequest } from "./helpers/sendRequest";
 import { sortArrayTasks } from "./helpers/sort";
 
@@ -66,8 +66,8 @@ class App extends Component {
         this.setState({
           arrayTask: array,
         })
-      );
-    // .catch((error) => console.error("error"));
+      )
+      .catch((error) => console.error("error", error.message));
   }
 
   addTask(newTaskObject) {
@@ -142,7 +142,7 @@ class App extends Component {
 
   handleCopy() {
     let copyTask = [];
-    sendRequest(this.API, "GET")
+    sendRequest(API_URL, "GET")
       .then((result) =>
         result.map((el, index) =>
           copyTask.push(
@@ -222,7 +222,7 @@ class App extends Component {
 
             <Modal
               modal={this.triggerModal}
-              statusModal={this.state.modal} //
+              statusModal={this.state.modal}
               modalTitle={this.state.modalTitle}
               modalConfirm={this.modalConfirm}
             >

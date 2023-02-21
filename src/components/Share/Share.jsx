@@ -21,7 +21,7 @@ class Share extends Component {
             href="https://web.telegram.org"
             target="_blank"
           >
-            <i class="bi bi-telegram"></i>
+            <i className="bi bi-telegram"></i>
           </a>
           <a
             className="share-img"
