@@ -56,7 +56,7 @@ class App extends Component {
 
   componentDidMount() {
     this.updatePage();
-    //  this.onSliderBtn();
+    this.onSliderBtn();
   }
 
   updatePage() {
