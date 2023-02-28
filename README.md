@@ -1,13 +1,13 @@
-# To-do list application.
+# To-do list application 📝.
 
-I am sure that everyone has been in a situation where it is impossible to keep everything in mind.
+I am sure that everyone has been in a situation where it is impossible to keep everything in mind 😵‍💫.
 
 That's why I decided to create a to-do list application. In which you can not only write down your thoughts, a shopping list for the store or a reminder to call your relatives. And there is an opportunity to mark the completed task, edit or even delete it from the general list.
 
 Also, if you forget what function each key performs, the instructions for the application will help you.
 #
 
-### Functionality:
+### Functionality 💻
 
 The application is created using React.js class components. Despite the fact that the technology is outdated, it was important to learn how to use the Class component, because most projects are still supported on this approach.
 
@@ -29,7 +29,11 @@ The application uses a local server which is implemented using the `npm - server
 
 #
 
-### Quick start 
+### Quick start ▶️
+1) Make a clone to your local folder;
+2) In the project console, install npm `npm i`
+3) Start the server in the console `npm run server`;
+4) Run the project in the project console `npm start`.
 
 #
 
